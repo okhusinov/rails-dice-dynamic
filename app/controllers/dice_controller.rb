@@ -2,6 +2,9 @@ class DiceController < ApplicationController
 
   def play_dice
 
+    @num_dice = params.fetch("number_of_dice").to_i
+    @sides = params.fetch("how_many_sides").to_i
+    
     @dice_rolls = Array.new
     
     @num_dice.times do
@@ -9,7 +12,7 @@ class DiceController < ApplicationController
       @dice_rolls.push(@new_roll)  
     end
     
-    render ({ :template => "dice_templates/5d4" })
+    render ({ :template => "dice_templates/play_dice" })
   
   end
 
